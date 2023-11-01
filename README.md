@@ -7,4 +7,3 @@ Tech used:
 4. NodeJS: for backend
 5. Mongoose : to connect database with backend
 6. CSS: used to designing the project
-This project is completely responsive.

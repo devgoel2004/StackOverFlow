@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Auth.css";
-import icon from "../../assests/images.png";
+import AboutAuth from "./AboutAuth";
+import icon from "../../assests/icon.png";
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(true);
   const handleSwitch = () => {
@@ -9,7 +10,8 @@ const Auth = () => {
   return (
     <>
       <section className="auth-section">
-        <div className="auth-container">
+        {isSignup && <AboutAuth />}
+        <div className="auth-container-2">
           {!isSignup && (
             <img src={icon} alt="stack oveflow" className="login-logo" />
           )}
@@ -31,7 +33,7 @@ const Auth = () => {
               </div>
               <input type="password" name="password" id="password" />
               {isSignup && (
-                <p>
+                <p style={{ color: "#666767", fontSize: "13px" }}>
                   Passwords must contain at least eight <br /> characters,
                   including at least 1 letter and 1 <br /> number
                 </p>
@@ -40,7 +42,7 @@ const Auth = () => {
             {isSignup && (
               <label htmlFor="">
                 <input type="checkbox" id="check" />
-                <p>
+                <p style={{ fontSize: "13px" }}>
                   Opt-in to recieve occasional,
                   <br />
                   product updates, user research ivitations,
@@ -55,7 +57,7 @@ const Auth = () => {
               <p style={{ color: "#666767", fontSize: "13px" }}>
                 By clicking "Sign Up", you agree to our{" "}
                 <span style={{ color: "#007ac6" }}>
-                  terms <br /> of service
+                  terms of <br /> service
                 </span>
                 ,<span style={{ color: "#007ac6" }}> privacy policy</span> and
                 <span style={{ color: "#007ac6" }}> cookie policy </span>

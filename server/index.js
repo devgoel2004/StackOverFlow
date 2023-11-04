@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 app.use("/user", userRoutes);
 const port = process.env.PORT || 5000;
 //connect mongoDB databae
-const connection_url = `mongodb+srv://devgoel12072004:9690011021@cluster0.lunbcc5.mongodb.net/?retryWrites=true&w=majority`;
+const connection_url = `mongodb+srv://devgoel12072004:9690011021@cluster0.lunbcc5.mongodb.net/test?retryWrites=true&w=majority`;
 
 mongoose
   .connect(connection_url)

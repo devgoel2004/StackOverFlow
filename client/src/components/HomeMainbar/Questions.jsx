@@ -16,7 +16,7 @@ const Questions = ({ question }) => {
         <div className="display-question-details">
           <Link
             className="question-title-link"
-            to={`/Questions/${question.id}`}>
+            to={`/Questions/${question._id}`}>
             {question.questionTitle}
           </Link>
           <div className="display-tags-time">
@@ -26,7 +26,7 @@ const Questions = ({ question }) => {
               ))}
             </div>
             <p className="display-time">
-              asked {question.askedOn} {question.userPosted}
+              asked {question.postedOn} {question.userPosted}
             </p>
           </div>
         </div>

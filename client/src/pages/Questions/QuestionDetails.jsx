@@ -5,76 +5,19 @@ import downVotes from "../../../src/assests/downvotes.svg";
 import "./Question.css";
 import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from "./DisplayAnswer";
+import { useSelector } from "react-redux";
 const QuestionDetails = () => {
   const { id } = useParams();
+  const questionsList = useSelector((state) => state.questionsReducer);
 
-  var questionsList = [
-    {
-      _id: "1",
-      upVote: 3,
-      downVote: 2,
-      noOfAnswers: 2,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["Java", "node js", "reactjs", "mongodb"],
-      userPosted: "mano",
-      askedOn: "jan 1",
-      answer: [
-        {
-          answerBody: "Answer",
-          userAnswered: "Kumar",
-          answeredOn: "jan 2",
-          userId: 2,
-        },
-      ],
-    },
-    {
-      _id: "2",
-      upVote: 3,
-      downVote: 2,
-      noOfAnswers: 0,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["Java", "node js", "reactjs", "mongodb"],
-      userPosted: "mano",
-      askedOn: "jan 1",
-      answer: [
-        {
-          answerBody: "Answer",
-          userAnswered: "Kumar",
-          answeredOn: "jan 2",
-          userId: 2,
-        },
-      ],
-    },
-    {
-      _id: "3",
-      upVote: 3,
-      downVote: 2,
-      noOfAnswers: 0,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["Java", "node js", "reactjs", "mongodb"],
-      userPosted: "mano",
-      askedOn: "jan 1",
-      answer: [
-        {
-          answerBody: "Answer",
-          userAnswered: "Kumar",
-          answeredOn: "jan 2",
-          userId: 2,
-        },
-      ],
-    },
-  ];
-
+  console.log(questionsList);
   return (
     <div className="question-details-page">
-      {questionsList === null ? (
+      {questionsList.data === null ? (
         <h1>Loading...</h1>
       ) : (
         <>
-          {questionsList
+          {questionsList.data
             .filter((ques) => ques._id === id)
             .map((ques) => (
               <div key={ques._id}>
@@ -109,7 +52,9 @@ const QuestionDetails = () => {
                           <button type="button">Delete</button>
                         </div>
                         <div>
-                          <p>asked {ques.askedOn}</p>
+                          <p>
+                            asked {ques.postedOn} {ques.userPosted}
+                          </p>
                           <Link
                             to={`/User/${ques.userId}`}
                             className="user-link"

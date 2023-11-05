@@ -5,3 +5,4 @@ export const login = (authData) => API.post("/user/login", authData);
 export const signUp = (authData) => API.post("/user/signup", authData);
 export const postQuestion = (questionData) =>
   API.post("/question/Ask", questionData);
+export const getAllQuestions = () => API.get("/question/get");

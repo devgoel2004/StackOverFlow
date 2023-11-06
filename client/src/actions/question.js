@@ -16,3 +16,19 @@ export const fetchAllQuestions = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const postAnswer = (answerdata) => async (dispatch) => {
+  try {
+    const { id, noOfAnswers, answerBody, userAnswered } = answerdata;
+    const { data } = await Api.postAnswer(
+      id,
+      noOfAnswers,
+      answerBody,
+      userAnswered
+    );
+    dispatch({ type: "POST_ANSWER", payload: data });
+    dispatch(fetchAllQuestions);
+  } catch (error) {
+    console.log(error);
+  }
+};

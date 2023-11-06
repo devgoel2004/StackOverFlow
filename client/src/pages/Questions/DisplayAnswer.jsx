@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar/Avatar";
-const DisplayAnswer = ({ ques }) => {
+const DisplayAnswer = ({ ques, handleShare }) => {
   return (
     <div>
       {ques.answer.map((ans) => (
@@ -9,7 +9,9 @@ const DisplayAnswer = ({ ques }) => {
           <p>{ans.answerBody}</p>
           <div className="question-action-user">
             <div>
-              <button type="button">Share</button>
+              <button type="button" onClick={handleShare}>
+                Share
+              </button>
               <button type="button">Delete</button>
             </div>
             <div>

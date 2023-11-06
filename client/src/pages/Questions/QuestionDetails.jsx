@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import upVotes from "../../../src/assests/upvotes.svg";
 import downVotes from "../../../src/assests/downvotes.svg";
 import "./Question.css";
+import moment from "moment";
+import copy from "copy-to-clipboard";
 import { useDispatch } from "react-redux";
 import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from "./DisplayAnswer";
@@ -11,7 +13,9 @@ import { postAnswer } from "../../actions/question";
 const QuestionDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const questionsList = useSelector((state) => state.questionsReducer);
+  const url = "http://localhost:3000";
   const [answer, setAnswer] = useState("");
   const User = useSelector((state) => state.currentUserReducer);
   const dispatch = useDispatch();
@@ -35,6 +39,10 @@ const QuestionDetails = () => {
         );
       }
     }
+  };
+  const handleShare = () => {
+    copy(url + location.pathname);
+    alert(`copied url: ${url}${location.pathname}`);
   };
   return (
     <div className="question-details-page">
@@ -73,12 +81,15 @@ const QuestionDetails = () => {
                       </div>
                       <div className="question-action-user">
                         <div>
-                          <button type="button">Share</button>
+                          <button type="button" onClick={handleShare}>
+                            Share
+                          </button>
                           <button type="button">Delete</button>
                         </div>
                         <div>
                           <p>
-                            asked {ques.postedOn} {ques.userPosted}
+                            asked {moment(ques.postedOn).fromNow()}{" "}
+                            {ques.userPosted}
                           </p>
                           <Link
                             to={`/User/${ques.userId}`}
@@ -96,7 +107,11 @@ const QuestionDetails = () => {
                 {ques.noOfAnswers !== 0 && (
                   <section>
                     <h3>{ques.noOfAnswers} answers</h3>
-                    <DisplayAnswer key={ques._id} ques={ques} />
+                    <DisplayAnswer
+                      key={ques._id}
+                      ques={ques}
+                      handleShare={handleShare}
+                    />
                   </section>
                 )}
                 <section className="post-ans-container">

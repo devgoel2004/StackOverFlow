@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./HomeMainbar.css";
+import moment from "moment";
 const Questions = ({ question }) => {
   return (
     <>
@@ -26,7 +27,7 @@ const Questions = ({ question }) => {
               ))}
             </div>
             <p className="display-time">
-              asked {question.postedOn} {question.userPosted}
+              asked {moment(question.postedOn).fromNow()} {question.userPosted}
             </p>
           </div>
         </div>

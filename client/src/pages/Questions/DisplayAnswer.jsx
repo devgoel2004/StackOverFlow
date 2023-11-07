@@ -1,7 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar/Avatar";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAnswer } from "../../actions/question";
 const DisplayAnswer = ({ ques, handleShare }) => {
+  const dispatch = useDispatch();
+  const User = useSelector((state) => state.currentUserReducer);
+  const { id } = useParams();
+  const handleDelete = (answerId, noOfAnswers) => {
+    dispatch(deleteAnswer(id, answerId, noOfAnswers - 1));
+  };
   return (
     <div>
       {ques.answer.map((ans) => (
@@ -12,7 +20,13 @@ const DisplayAnswer = ({ ques, handleShare }) => {
               <button type="button" onClick={handleShare}>
                 Share
               </button>
-              <button type="button">Delete</button>
+              {User?.result?.id !== ans?.userId && (
+                <button
+                  type="button"
+                  onClick={() => handleDelete(ans._id, ques.noOfAnswers)}>
+                  Delete
+                </button>
+              )}
             </div>
             <div>
               <p>answered {ans.answeredOn}</p>

@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from "./DisplayAnswer";
 import { useSelector } from "react-redux";
-import { postAnswer } from "../../actions/question";
+import { deleteQuestion, postAnswer } from "../../actions/question";
 const QuestionDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -35,6 +35,7 @@ const QuestionDetails = () => {
             noOfAnswers: answerLength + 1,
             answerBody: answer,
             userAnswered: User.result.name,
+            userId: User.result._id,
           })
         );
       }
@@ -43,6 +44,9 @@ const QuestionDetails = () => {
   const handleShare = () => {
     copy(url + location.pathname);
     alert(`copied url: ${url}${location.pathname}`);
+  };
+  const handleDelete = () => {
+    dispatch(deleteQuestion(id, navigate));
   };
   return (
     <div className="question-details-page">
@@ -84,7 +88,11 @@ const QuestionDetails = () => {
                           <button type="button" onClick={handleShare}>
                             Share
                           </button>
-                          <button type="button">Delete</button>
+                          {User?.result?.id !== ques?.userId && (
+                            <button type="button" onClick={handleDelete}>
+                              Delete
+                            </button>
+                          )}
                         </div>
                         <div>
                           <p>

@@ -17,6 +17,16 @@ export const fetchAllQuestions = () => async (dispatch) => {
   }
 };
 
+export const voteQuestion = (id, value, userId) => async (dispatch) => {
+  try {
+    const { data } = await Api.voteQuestion(id, value, userId);
+    console.log(data);
+    dispatch(fetchAllQuestions());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const postAnswer = (answerdata) => async (dispatch) => {
   try {
     const { id, noOfAnswers, answerBody, userAnswered, userId } = answerdata;

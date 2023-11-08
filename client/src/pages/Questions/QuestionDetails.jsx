@@ -9,7 +9,11 @@ import { useDispatch } from "react-redux";
 import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from "./DisplayAnswer";
 import { useSelector } from "react-redux";
-import { deleteQuestion, postAnswer } from "../../actions/question";
+import {
+  deleteQuestion,
+  postAnswer,
+  voteQuestion,
+} from "../../actions/question";
 const QuestionDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -41,6 +45,13 @@ const QuestionDetails = () => {
       }
     }
   };
+  const handleUpVote = () => {
+    console.log(1);
+    dispatch(voteQuestion(id, "upVote", User.result._id));
+  };
+  const handleDownVote = () => {
+    dispatch(voteQuestion(id, "downVote", User.result._id));
+  };
   const handleShare = () => {
     copy(url + location.pathname);
     alert(`copied url: ${url}${location.pathname}`);
@@ -67,13 +78,15 @@ const QuestionDetails = () => {
                         src={upVotes}
                         alt="upvotes"
                         className="votes-icon"
+                        onClick={handleUpVote}
                       />
-                      <p>{ques.upVote - ques.downVote}</p>
+                      <p>{ques.upVote.length - ques.downVote.length}</p>
                       <img
                         width="18"
                         src={downVotes}
                         alt="downvotes"
                         className="votes-icon"
+                        onClick={handleDownVote}
                       />
                     </div>
                     <div style={{ width: "100%" }}>

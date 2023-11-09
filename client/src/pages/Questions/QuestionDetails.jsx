@@ -46,7 +46,6 @@ const QuestionDetails = () => {
     }
   };
   const handleUpVote = () => {
-    console.log(1);
     dispatch(voteQuestion(id, "upVote", User.result._id));
   };
   const handleDownVote = () => {
@@ -80,6 +79,7 @@ const QuestionDetails = () => {
                         className="votes-icon"
                         onClick={handleUpVote}
                       />
+
                       <p>{ques.upVote.length - ques.downVote.length}</p>
                       <img
                         width="18"

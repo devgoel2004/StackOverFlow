@@ -37,21 +37,19 @@ export const deleteQuestion = async (req, res) => {
 export const voteQuestion = async (req, res) => {
   const { id: _id } = req.params;
   const { value, userId } = req.body;
-  if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).send("question unavailable");
-  }
 
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("question unavailable...");
+  }
   try {
     const question = await Questions.findById(_id);
-    // console.log(question);
     const upIndex = question.upVote.findIndex((id) => id === String(userId));
     const downIndex = question.downVote.findIndex(
       (id) => id === String(userId)
     );
-
     if (value === "upVote") {
       if (downIndex !== -1) {
-        question.downVote = question.downVote.filter(
+        question.downVote = question.downVotes.filter(
           (id) => id !== String(userId)
         );
       }
@@ -73,9 +71,8 @@ export const voteQuestion = async (req, res) => {
       }
     }
     await Questions.findByIdAndUpdate(_id, question);
-    res.status(200).json({ message: "voted successufull" });
+    res.status(200).json({ message: "voted successfull..." });
   } catch (error) {
-    console.log(error);
-    res.status(404).json({ message: "id no found" });
+    res.status(404).json({ message: "Id not found" });
   }
 };

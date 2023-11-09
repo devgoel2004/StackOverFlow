@@ -18,9 +18,9 @@ export const fetchAllQuestions = () => async (dispatch) => {
 };
 
 export const voteQuestion = (id, value, userId) => async (dispatch) => {
+  // console.log(id);
   try {
     const { data } = await Api.voteQuestion(id, value, userId);
-    console.log(data);
     dispatch(fetchAllQuestions());
   } catch (error) {
     console.log(error);

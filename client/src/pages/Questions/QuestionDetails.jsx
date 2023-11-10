@@ -45,12 +45,15 @@ const QuestionDetails = () => {
       }
     }
   };
+  //function to handle Up Vote
   const handleUpVote = () => {
     dispatch(voteQuestion(id, "upVote", User.result._id));
   };
+  //function to handle Down Vote
   const handleDownVote = () => {
     dispatch(voteQuestion(id, "downVote", User.result._id));
   };
+  //functionality to delete and share the question
   const handleShare = () => {
     copy(url + location.pathname);
     alert(`copied url: ${url}${location.pathname}`);

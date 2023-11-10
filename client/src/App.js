@@ -5,11 +5,14 @@ import { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { fetchAllQuestions } from "./actions/question";
+import { fetchAllUsers } from "./actions/users";
+
 // import Routes from "./Routes";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllQuestions());
+    dispatch(fetchAllUsers());
   }, [dispatch]);
   return (
     <div className="App">

@@ -63,9 +63,9 @@ const Navbar = () => {
                 {User.result.name.charAt(0).toUpperCase()}
               </Link>
             </Avatar>
-            <butto className="nav-item nav-links" onClick={handleLogout}>
-              Log Out
-            </butto>
+            <button className="nav-item nav-links" onClick={handleLogout}>
+              Log out
+            </button>
           </>
         )}
       </div>

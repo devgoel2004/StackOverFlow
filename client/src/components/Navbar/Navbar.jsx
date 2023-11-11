@@ -58,7 +58,7 @@ const Navbar = () => {
               py="7px"
               borderRadius="50%">
               <Link
-                to="/user"
+                to={`/User/${User?.result?._id}`}
                 style={{ color: "white", textDecoration: "none" }}>
                 {User.result.name.charAt(0).toUpperCase()}
               </Link>

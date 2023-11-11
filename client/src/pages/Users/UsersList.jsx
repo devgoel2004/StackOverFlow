@@ -4,7 +4,7 @@ import User from "./User";
 const UsersList = () => {
   const users = useSelector((state) => state.usersReducer);
   const Users = users.allUsersDetails;
-  console.log(Users);
+
   return (
     <div className="userList-container">
       {Users ? (

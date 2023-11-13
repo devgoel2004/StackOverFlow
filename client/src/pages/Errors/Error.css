@@ -1,0 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+  font-family: "Poppins";
+}

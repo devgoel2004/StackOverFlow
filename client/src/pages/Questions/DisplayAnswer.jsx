@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar/Avatar";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteAnswer } from "../../actions/question";
+import moment from "moment";
 const DisplayAnswer = ({ ques, handleShare }) => {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
@@ -29,7 +30,7 @@ const DisplayAnswer = ({ ques, handleShare }) => {
               )}
             </div>
             <div>
-              <p>answered {ans.answeredOn}</p>
+              <p>answered {moment(ans.postedOn).fromNow()} </p>
               <Link
                 to={`/User/${ques.userId}`}
                 className="user-link"

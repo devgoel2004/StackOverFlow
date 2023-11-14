@@ -70,3 +70,25 @@
 .nav-links:hover {
   background-color: #d3e4eb;
 }
+@media (max-width: 767px) {
+  .main-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    text-align: center;
+  }
+  .nav-logo,
+  .nav-item,
+  .nav-btn,
+  .navbar form {
+    margin: 5px 0;
+  }
+  .navbar form input {
+    min-width: 100%;
+  }
+}

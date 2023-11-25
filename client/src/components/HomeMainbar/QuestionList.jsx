@@ -6,7 +6,7 @@ const QuestionList = ({ questionsList }) => {
   return (
     <div>
       <>
-        {questionsList.map((question) => (
+        {questionsList?.map((question) => (
           <Questions question={question} key={question.id} />
         ))}
       </>

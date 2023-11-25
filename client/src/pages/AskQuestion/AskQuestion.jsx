@@ -14,18 +14,26 @@ const AskQuestion = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log({ questionTitle, questionBody, questionTags });
-    dispatch(
-      askQuestion(
-        {
-          questionTitle,
-          questionBody,
-          questionTags,
-          userPosted: User.result.name,
-          userId: User?.result?._id,
-        },
-        navigate
-      )
-    );
+    if (User) {
+      if (questionTitle && questionBody && questionTags) {
+        dispatch(
+          askQuestion(
+            {
+              questionTitle,
+              questionBody,
+              questionTags,
+              userPosted: User.result.name,
+              userId: User?.result?._id,
+            },
+            navigate
+          )
+        );
+      } else {
+        alert("Please enter all the fields");
+      }
+    } else {
+      alert("Login to ask question");
+    }
   };
 
   const handleEnter = (e) => {
@@ -39,7 +47,9 @@ const AskQuestion = () => {
       <div className="ask-ques-container">
         <h1>Ask A Public Question</h1>
         <form onSubmit={handleSubmit}>
-          <div className="ask-form-container">
+          <div
+            className="ask-form-container"
+            style={{ display: "flex", flexDirection: "column" }}>
             <label htmlFor="ask-ques-title">
               <h4>Title</h4>
               <p>

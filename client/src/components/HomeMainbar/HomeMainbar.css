@@ -175,5 +175,10 @@
 .display-tags-time .display-time {
   font-size: 13px;
 }
+@media (max-width: 600px) {
+  .question-details-page {
+    width: calc(100% - 24px);
+  }
+}
 
 /* Add more media queries as needed for different screen sizes */

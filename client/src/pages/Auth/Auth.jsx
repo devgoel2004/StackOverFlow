@@ -15,6 +15,9 @@ const Auth = () => {
   const navigate = useNavigate();
   const handleSwitch = () => {
     setIsSignup(!isSignup);
+    setName("");
+    setEmail("");
+    setPassword("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,17 +32,16 @@ const Auth = () => {
     } else {
       dispatch(login({ email, password }, navigate));
     }
-    console.log({ name, email, password });
   };
   return (
     <>
       <section className="auth-section">
         {isSignup && <AboutAuth />}
         <div className="auth-container-2">
-          {!isSignup && (
-            <img src={icon} alt="stack oveflow" className="login-logo" />
-          )}
           <form onSubmit={handleSubmit}>
+            {!isSignup && (
+              <img src={icon} alt="stack oveflow" className="login-logo" />
+            )}
             {isSignup && (
               <label htmlFor="name">
                 <h4>Display Name</h4>
@@ -50,36 +52,45 @@ const Auth = () => {
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
+                  value={name}
                 />
               </label>
             )}
-            <label htmlFor="">
+            <label htmlFor="email">
               <h4>Email</h4>
               <input
                 type="email"
                 name="email"
+                value={email}
                 id="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
-            <label htmlFor="">
-              <div>
+
+            <label htmlFor="password">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}>
                 <h4>Password</h4>
-                {!isSignup && <h4>Forgot Password</h4>}
+                {isSignup && (
+                  <p style={{ color: "#007ac6", fontSize: "13px" }}>
+                    forget password?
+                  </p>
+                )}
               </div>
               <input
                 type="password"
                 name="password"
                 id="password"
-                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
-              {isSignup && (
-                <p style={{ color: "#666767", fontSize: "13px" }}>
-                  Passwords must contain at least eight <br /> characters,
-                  including at least 1 letter and 1 <br /> number
-                </p>
-              )}
             </label>
+
             {isSignup && (
               <label htmlFor="">
                 <input type="checkbox" id="check" />

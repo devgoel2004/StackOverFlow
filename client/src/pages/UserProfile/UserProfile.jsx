@@ -9,20 +9,18 @@ import moment from "moment";
 import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
 import "./UserProfile.css";
-const UserProfile = () => {
+const UserProfile = ({ slideIn, handleSlideIn }) => {
   const { id } = useParams();
   const users = useSelector((state) => state.usersReducer);
-  const Users = users.allUsersDetails;
-  const currentProfile = Users && Users.filter((user) => user._id === id);
+  const currentProfile = users && users.filter((user) => user._id === id);
   const currentUser = useSelector((state) => state.currentUserReducer);
-  console.log(currentProfile);
   const [Switch, setSwitch] = useState(false);
   return (
     <>
       <div className="home-container-1">
-        <LeftSidebar />
+        <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
         <div className="home-container-2">
-          {Users ? (
+          {users ? (
             <>
               <section>
                 <div className="user-details-container">
@@ -36,7 +34,15 @@ const UserProfile = () => {
                       {currentProfile[0].name.charAt(0).toUpperCase()}
                     </Avatar>
                     <div className="user-name">
-                      <h1>{currentProfile[0]?.name}</h1>
+                      <h1>
+                        {currentProfile[0]?.name}
+                        <span
+                          title="badge/rank"
+                          style={{ fontSize: "30px", color: "grey" }}>
+                          <i>-{currentProfile[0]?.badge}</i>
+                          
+                        </span>
+                      </h1>
                       <p>
                         <FontAwesomeIcon icon={faBirthdayCake} /> joined on{" "}
                         {moment(currentProfile[0].joinedOn).fromNow()}

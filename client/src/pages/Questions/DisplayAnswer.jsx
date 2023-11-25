@@ -38,6 +38,7 @@ const DisplayAnswer = ({ ques, handleShare }) => {
                 <Avatar backgroundColor="green" color="white" px="8px" py="5px">
                   {ans.userAnswered.charAt(0).toUpperCase()}
                 </Avatar>
+                <div>{ans.userAnswered}</div>
               </Link>
             </div>
           </div>

@@ -9,18 +9,59 @@ import Tags from "./pages/Tags/Tags";
 import Users from "./pages/Users/Users";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Error from "./pages/Errors/Error";
-const AllRoutes = () => {
+const AllRoutes = ({ slideIn, handleSlideIn }) => {
   return (
     <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route exact path="/Auth" element={<Auth />} />
-      <Route exact path="/Questions" element={<Question />} />
-      <Route exact path="/AskQuestion" element={<AskQuestion />} />
-      <Route exact path={`/Questions/:id`} element={<DisplayQuestion />} />
-      <Route exact path={`/Tags`} element={<Tags />} />
-      <Route exact path="/Users" element={<Users />} />
-      <Route exact path={`/User/:id`} element={<UserProfile />} />
-      <Route path="*" element={<Error />} />
+      <Route
+        exact
+        path="/"
+        element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        exact
+        path="/Auth"
+        element={<Auth slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        exact
+        path="/Questions"
+        element={<Question slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        exact
+        path="/AskQuestion"
+        element={
+          <AskQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} />
+        }
+      />
+      <Route
+        exact
+        path={`/Questions/:id`}
+        element={
+          <DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} />
+        }
+      />
+      <Route
+        exact
+        path={`/Tags`}
+        element={<Tags slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        exact
+        path="/Users"
+        element={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        exact
+        path={`/User/:id`}
+        element={
+          <UserProfile slideIn={slideIn} handleSlideIn={handleSlideIn} />
+        }
+      />
+      <Route
+        path="*"
+        element={<Error slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
     </Routes>
   );
 };

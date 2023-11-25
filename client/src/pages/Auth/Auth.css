@@ -33,7 +33,7 @@
 }
 .auth-container-2 form label input {
   padding: 10px;
-  width: calc(100%-30px);
+  width: calc(100% - 30px);
   border: solid 1px #00003e;
   font-size: 13px;
 }
@@ -74,4 +74,9 @@
   border: none;
   font-size: 13px;
   cursor: pointer;
+}
+@media (max-width: 820px) {
+  .auth-container-1 {
+    display: none;
+  }
 }

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  useNavigate,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import upVotes from "../../../src/assests/upvotes.svg";
 import downVotes from "../../../src/assests/downvotes.svg";
 import "./Question.css";
@@ -14,6 +20,7 @@ import {
   postAnswer,
   voteQuestion,
 } from "../../actions/question";
+
 const QuestionDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -25,7 +32,6 @@ const QuestionDetails = () => {
   const dispatch = useDispatch();
   const handlePostAnswer = (e, answerLength) => {
     e.preventDefault();
-    console.log(answerLength);
     if (User === null) {
       alert("Login or signup to answer a question");
       navigate("/Auth");
@@ -42,16 +48,27 @@ const QuestionDetails = () => {
             userId: User.result._id,
           })
         );
+        setAnswer("");
       }
     }
   };
   //function to handle Up Vote
   const handleUpVote = () => {
-    dispatch(voteQuestion(id, "upVote", User.result._id));
+    if (User === null) {
+      alert("Login or signup to up vote a question");
+      navigate("/Auth");
+    } else {
+      dispatch(voteQuestion(id, "upVote", User.result._id));
+    }
   };
   //function to handle Down Vote
   const handleDownVote = () => {
-    dispatch(voteQuestion(id, "downVote", User.result._id));
+    if (User === null) {
+      alert("Login or signup to down vote a question");
+      navigate("/Auth");
+    } else {
+      dispatch(voteQuestion(id, "downVote", User.result._id));
+    }
   };
   //functionality to delete and share the question
   const handleShare = () => {
@@ -82,7 +99,6 @@ const QuestionDetails = () => {
                         className="votes-icon"
                         onClick={handleUpVote}
                       />
-
                       <p>{ques.upVote.length - ques.downVote.length}</p>
                       <img
                         width="18"
@@ -122,6 +138,7 @@ const QuestionDetails = () => {
                             <Avatar backgroundColor="orange" px="8px" py="5px">
                               {ques.userPosted.charAt(0).toUpperCase()}
                             </Avatar>
+                            <div>{ques.userPosted}</div>
                           </Link>
                         </div>
                       </div>
@@ -130,7 +147,7 @@ const QuestionDetails = () => {
                 </section>
                 {ques.noOfAnswers !== 0 && (
                   <section>
-                    <h3>{ques.noOfAnswers} answers</h3>
+                    <h3>{ques.noOfAnswers} Answers</h3>
                     <DisplayAnswer
                       key={ques._id}
                       ques={ques}

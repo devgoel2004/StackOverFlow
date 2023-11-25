@@ -2,7 +2,7 @@ import React from "react";
 import LeftSidebar from "../../components/LefftSidebar/LeftSidebar";
 import TagsList from "./TagsList";
 import "./Tags.css";
-const Tags = () => {
+const Tags = ({ slideIn, handleSlideIn }) => {
   const tagsList = [
     {
       id: 1,
@@ -67,7 +67,7 @@ const Tags = () => {
   ];
   return (
     <div className="home-container-1">
-      <LeftSidebar />
+      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
       <div className="home-container-2">
         <h1 className="tags-h1">Tags</h1>
         <p className="tags-p">

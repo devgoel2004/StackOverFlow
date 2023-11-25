@@ -5,6 +5,15 @@
   transform: translateZ(0);
   box-sizing: border-box;
   font-size: 13px;
+  height: auto;
+  background-color: white;
+  min-height: 100vh;
+}
+.nav-btn {
+  background-color: inherit;
+  width: 100%;
+  border: none;
+  padding: 0;
 }
 .side-nav {
   height: auto;
@@ -36,4 +45,11 @@
   color: black;
   background-color: rgb(255, 255, 255);
   border-right: solid 3px #ef8236;
+}
+@media (max-width: 760px) {
+  .left-sidebar {
+    position: absolute;
+    transform: translateX(-100%);
+    z-index: 10;
+  }
 }

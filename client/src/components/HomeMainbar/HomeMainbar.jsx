@@ -1,16 +1,16 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./HomeMainbar.css";
-
 import QuestionList from "./QuestionList";
 import { useSelector } from "react-redux";
 const HomeMainbar = () => {
-  const user = 1;
+  const user = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
   const questionsList = useSelector((state) => state.questionsReducer);
 
   const checkAuth = () => {
     // function to check that user has been signed in or not.
+    // console.log(user);
     if (!user) {
       alert("Login or signup to ask a question");
       navigate("/Auth");
@@ -36,8 +36,8 @@ const HomeMainbar = () => {
           <h1>Loading...</h1>
         ) : (
           <>
-            <p>{questionsList.data.length} questions</p>
-            <QuestionList questionsList={questionsList.data} />
+            <p>{questionsList?.data?.length} questions</p>
+            <QuestionList questionsList={questionsList?.data} />
           </>
         )}
       </>

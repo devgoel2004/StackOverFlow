@@ -5,7 +5,7 @@ import WidgetTags from "./WidgetTags";
 const RightSidebar = () => {
   return (
     <div>
-      <aside className="right-sidebar">
+      <aside className="right-sidebar responsive">
         <Widget />
         <WidgetTags />
       </aside>

@@ -41,16 +41,22 @@ const Navbar = ({ handleSlideIn }) => {
           <FaBars />
         </button>
         <div className="navbar-1">
-          <Link to="/" className="nav-item nav-logo">
+          <Link to="/Stackoverflow-frontend/" className="nav-item nav-logo">
             <img src={Logo} alt="logo" />
           </Link>
-          <Link to="/" className="nav-items nav-item nav-btn res-nav">
+          <Link
+            to="/Stackoverflow-frontend/"
+            className="nav-items nav-item nav-btn res-nav">
             About
           </Link>
-          <Link to="/" className="nav-items nav-item nav-btn res-nav">
+          <Link
+            to="/Stackoverflow-frontend/"
+            className="nav-items nav-item nav-btn res-nav">
             Products
           </Link>
-          <Link to="/" className="nav-items nav-item nav-btn res-nav">
+          <Link
+            to="/Stackoverflow-frontend/"
+            className="nav-items nav-item nav-btn res-nav">
             For Teams
           </Link>
           <form>
@@ -69,7 +75,9 @@ const Navbar = ({ handleSlideIn }) => {
         </div>
         <div className="navbar-2">
           {User === null ? (
-            <Link to="/Auth" className="nav-item nav-links ">
+            <Link
+              to="/Stackoverflow-frontend/Auth"
+              className="nav-item nav-links ">
               Log in
             </Link>
           ) : (
@@ -80,7 +88,7 @@ const Navbar = ({ handleSlideIn }) => {
                 py="7px"
                 borderRadius="50%">
                 <Link
-                  to={`/User/${User?.result?._id}`}
+                  to={`/Stackoverflow-frontend/User/${User?.result?._id}`}
                   style={{ color: "white", textDecoration: "none" }}>
                   {User?.result.name.charAt(0).toUpperCase()}
                 </Link>

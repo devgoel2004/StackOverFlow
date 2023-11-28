@@ -15,14 +15,17 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
   };
   const checkAuth = () => {
     if (User === null) {
-      alert("Login ")
+      alert("Login ");
     }
   };
   return (
     <div className="left-sidebar" style={slideIn ? slidInStyle : slideOutStyle}>
       <nav className="side-nav">
         <button className="nav-btn" onClick={handleSlideIn}>
-          <NavLink to="/" className="side-nav-links" activeClassName="active">
+          <NavLink
+            to="/Stackoverflow-frontend/"
+            className="side-nav-links"
+            activeClassName="active">
             <p>Home</p>
           </NavLink>
         </button>
@@ -32,7 +35,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
           </div>
           <button onClick={handleSlideIn} className="nav-btn">
             <NavLink
-              to="/Questions"
+              to="/Stackoverflow-frontend/Questions"
               className="side-nav-links"
               activeClassName="active"
               style={{ paddingLeft: "40px" }}>
@@ -42,7 +45,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
           </button>
           <button className="nav-btn" onClick={handleSlideIn}>
             <NavLink
-              to="/Tags"
+              to="/Stackoverflow-frontend/Tags"
               activeClassName="active"
               className="side-nav-links"
               style={{ paddingLeft: "40px" }}>
@@ -51,7 +54,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
           </button>
           <button className="nav-btn" onClick={() => handleSlideIn()}>
             <NavLink
-              to="/Users"
+              to="/Stackoverflow-frontend/Users"
               activeClassName="active"
               className="side-nav-links"
               style={{ paddingLeft: "40px" }}>

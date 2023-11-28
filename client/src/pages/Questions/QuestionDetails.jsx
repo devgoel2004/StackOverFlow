@@ -132,7 +132,7 @@ const QuestionDetails = () => {
                             {ques.userPosted}
                           </p>
                           <Link
-                            to={`/User/${ques.userId}`}
+                            to={`/Stackoverflow-frontend/User/${ques.userId}`}
                             className="user-link"
                             style={{ color: "#0086d8" }}>
                             <Avatar backgroundColor="orange" px="8px" py="5px">
@@ -176,13 +176,16 @@ const QuestionDetails = () => {
                   <p>
                     Browse other Question tagged
                     {ques.questionTags.map((tag) => (
-                      <Link to="/tags" key={tag} className="ans-tags">
+                      <Link
+                        to="/Stackoverflow-frontend/tags"
+                        key={tag}
+                        className="ans-tags">
                         {tag}
                       </Link>
                     ))}
                     or
                     <Link
-                      to="/AskQuestion"
+                      to="/Stackoverflow-frontend/AskQuestion"
                       style={{
                         textDecoration: "none",
                         color: "#009dff",

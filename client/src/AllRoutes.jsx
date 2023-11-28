@@ -14,46 +14,46 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
     <Routes>
       <Route
         exact
-        path="/"
+        path="/stackoverflow-frontend"
         element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
       <Route
         exact
-        path="/Auth"
+        path="/Stackoverflow-frontend/Auth"
         element={<Auth slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
       <Route
         exact
-        path="/Questions"
+        path="/Stackoverflow-frontend/Questions"
         element={<Question slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
       <Route
         exact
-        path="/AskQuestion"
+        path="/Stackoverflow-frontend/AskQuestion"
         element={
           <AskQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} />
         }
       />
       <Route
         exact
-        path={`/Questions/:id`}
+        path={`/Stackoverflow-frontend/Questions/:id`}
         element={
           <DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} />
         }
       />
       <Route
         exact
-        path={`/Tags`}
+        path={`/Stackoverflow-frontend/Tags`}
         element={<Tags slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
       <Route
         exact
-        path="/Users"
+        path="/Stackoverflow-frontend/Users"
         element={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
       <Route
         exact
-        path={`/User/:id`}
+        path={`/Stackoverflow-frontend/User/:id`}
         element={
           <UserProfile slideIn={slideIn} handleSlideIn={handleSlideIn} />
         }

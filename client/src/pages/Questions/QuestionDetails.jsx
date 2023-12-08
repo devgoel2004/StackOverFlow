@@ -6,6 +6,7 @@ import {
   useLocation,
   Navigate,
 } from "react-router-dom";
+import HTMLReactParser from "html-react-parser";
 import upVotes from "../../../src/assests/upvotes.svg";
 import downVotes from "../../../src/assests/downvotes.svg";
 import "./Question.css";
@@ -20,6 +21,7 @@ import {
   postAnswer,
   voteQuestion,
 } from "../../actions/question";
+import { faPersonWalkingDashedLineArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const QuestionDetails = () => {
   const { id } = useParams();
@@ -108,8 +110,12 @@ const QuestionDetails = () => {
                         onClick={handleDownVote}
                       />
                     </div>
+                    {console.log(ques)}
+                    <div>{ques.videos}</div>
                     <div style={{ width: "100%" }}>
-                      <p className="question-body">{ques.questionBody}</p>
+                      <p className="question-body">
+                        {HTMLReactParser(ques.questionBody)}
+                      </p>
                       <div className="question-details-tags">
                         {ques.questionTags.map((tag) => (
                           <p key={tag}>{tag}</p>

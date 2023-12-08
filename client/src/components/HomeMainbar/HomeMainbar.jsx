@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./HomeMainbar.css";
 import QuestionList from "./QuestionList";
 import { useSelector } from "react-redux";
+import Loader from "../Loader/Loader";
 const HomeMainbar = () => {
   const user = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
@@ -10,12 +11,11 @@ const HomeMainbar = () => {
 
   const checkAuth = () => {
     // function to check that user has been signed in or not.
-    // console.log(user);
     if (!user) {
       alert("Login or signup to ask a question");
-      navigate("/Auth");
+      navigate("/Stackoverflow-frontend/Auth");
     } else {
-      navigate("/AskQuestion");
+      navigate("/Stackoverflow-frontend/AskQuestion");
     }
   };
   const location = useLocation();
@@ -33,7 +33,7 @@ const HomeMainbar = () => {
       </div>
       <>
         {questionsList.data === null ? (
-          <h1>Loading...</h1>
+          <Loader />
         ) : (
           <>
             <p>{questionsList?.data?.length} questions</p>

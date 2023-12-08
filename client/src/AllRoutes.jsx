@@ -14,7 +14,7 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
     <Routes>
       <Route
         exact
-        path="/stackoverflow-frontend"
+        path="/stackoverflow-frontend/"
         element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} />}
       />
       <Route

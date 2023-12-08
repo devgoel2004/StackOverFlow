@@ -5,6 +5,7 @@ import "./Auth.css";
 import AboutAuth from "./AboutAuth";
 import icon from "../../assests/icon.png";
 import { signUp, login } from "../../actions/auth";
+import toast from "react-hot-toast";
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [name, setName] = useState("");
@@ -22,15 +23,20 @@ const Auth = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert("Enter email and password");
+      return toast.error("Enter email and password");
     }
     if (isSignup) {
       if (!name) {
-        alert("Enter a name to continue");
+        return toast.error("Enter a name to continue");
       }
       dispatch(signUp({ name, email, password }, navigate));
+      toast.success("Redirecting...");
+      toast.success("User registered successfully");
+      toast.success("Logged in successfully");
     } else {
       dispatch(login({ email, password }, navigate));
+      toast.success("Redirecting");
+      toast.success("Logged in successfully");
     }
   };
   return (

@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./AskQuestion.css";
 import { askQuestion } from "../../actions/question";
+import toast from "react-hot-toast";
+import Editor from "../../components/Editor/Editor";
 const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
   const [questionTags, setQuestionTags] = useState("");
-
+  const [videos, setVideos] = useState([]);
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log({ questionTitle, questionBody, questionTags });
     if (User) {
       if (questionTitle && questionBody && questionTags) {
         dispatch(
@@ -22,17 +23,19 @@ const AskQuestion = () => {
               questionTitle,
               questionBody,
               questionTags,
+              videos,
               userPosted: User.result.name,
               userId: User?.result?._id,
             },
             navigate
           )
         );
+        toast.success("Question posted successfully");
       } else {
-        alert("Please enter all the fields");
+        toast.error("Please Enter values in all the fields");
       }
     } else {
-      alert("Login to ask question");
+      toast.error("Please Login to ask question");
     }
   };
 
@@ -71,6 +74,7 @@ const AskQuestion = () => {
                 Include all the information someone would need to answer your
                 question
               </p>
+              <Editor value={questionBody} onChange={setQuestionBody} />
               <textarea
                 name=""
                 id="ask-ques-body"
@@ -80,6 +84,18 @@ const AskQuestion = () => {
                 cols="30"
                 rows="10"
                 onKeyPress={handleEnter}></textarea>
+            </label>
+            <label htmlFor="videos">
+              <h4>Upload videos</h4>
+              <input
+                type="file"
+                name="videos"
+                id="videos"
+                multiple
+                className="form-control"
+                accept=".mp4, .mkv"
+                onChange={(e) => setVideos(e.target.files)}
+              />
             </label>
             <label htmlFor="ask-ques-tags">
               <h4>Tags</h4>
@@ -94,11 +110,7 @@ const AskQuestion = () => {
               />
             </label>
           </div>
-          <input
-            type="submit"
-            value="Review your question"
-            className="review-btn"
-          />
+          <input type="submit" value="Post Question" className="review-btn" />
         </form>
       </div>
     </div>

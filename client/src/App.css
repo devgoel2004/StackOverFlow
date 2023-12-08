@@ -15,7 +15,20 @@
   padding: 24px;
   box-sizing: border-box;
 }
-
+.open-chatbot {
+  position: sticky;
+  bottom: 5%;
+  left: 85%;
+  background-color: #ef8236;
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.open-chatbot:hover {
+  background-color: #ef83369a;
+}
 @media screen and (max-width: 760px) {
   .home-container-2 {
     max-width: 100%;

@@ -34,19 +34,22 @@
   resize: vertical;
 }
 .review-btn {
-  margin: 25px 0px;
-  padding: 10px;
+  margin: 25px 10px;
+  padding: 15px 10px;
   background-color: #009dff;
   border: solid 1px #009dff;
   color: white;
   border-radius: 4px;
   cursor: pointer;
+  width: 200px;
   transition: 0.3s;
 }
 .review-btn:hover {
   background-color: #0086d8;
 }
-
+.q1-editor {
+  min-height: 150px;
+}
 @media screen and (max-width: 768px) {
   .review-btn {
     margin-left: 20px;

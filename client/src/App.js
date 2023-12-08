@@ -6,15 +6,17 @@ import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router } from "react-router-dom";
 import { fetchAllQuestions } from "./actions/question";
 import { fetchAllUsers } from "./actions/users";
-
+import { Toaster } from "react-hot-toast";
 // import Routes from "./Routes";
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [slideIn, setSlideIn] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());
   }, [dispatch]);
-  const [slideIn, setSlideIn] = useState(true);
   useEffect(() => {
     if (window.innerWidth <= 760) {
       setSlideIn(false);
@@ -28,7 +30,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar handleSlideIn={handleSlideIn} />
+        <Toaster />
+        <Navbar handleSlideIn={handleSlideIn} setIsOpen={setIsOpen} />
         <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} />
       </Router>
     </div>

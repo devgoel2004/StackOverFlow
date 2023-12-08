@@ -8,15 +8,15 @@ import "./Navbar.css";
 import { setCurrentUser } from "../../actions/currentUser";
 import { jwtDecode } from "jwt-decode";
 import { FaBars } from "react-icons/fa";
-
-const Navbar = ({ handleSlideIn }) => {
+import toast from "react-hot-toast";
+const Navbar = ({ setIsOpen, handleSlideIn }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [isNavExpanded, setIsNavExpanded] = useState(false);
   var User = useSelector((state) => state.currentUserReducer);
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
-    navigate("/");
+    toast.success("Logged out successfully");
+    navigate("/Stackoverflow-frontend/");
     dispatch(setCurrentUser(null));
   };
 
@@ -48,6 +48,11 @@ const Navbar = ({ handleSlideIn }) => {
             to="/Stackoverflow-frontend/"
             className="nav-items nav-item nav-btn res-nav">
             About
+          </Link>
+          <Link
+            className="nav-item nav-items nav-btn res-nav"
+            onClick={() => setIsOpen((prev) => !prev)}>
+            Chatbot
           </Link>
           <Link
             to="/Stackoverflow-frontend/"

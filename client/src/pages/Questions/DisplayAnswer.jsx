@@ -4,12 +4,14 @@ import Avatar from "../../components/Avatar/Avatar";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteAnswer } from "../../actions/question";
 import moment from "moment";
+import toast from "react-hot-toast";
 const DisplayAnswer = ({ ques, handleShare }) => {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
   const { id } = useParams();
   const handleDelete = (answerId, noOfAnswers) => {
     dispatch(deleteAnswer(id, answerId, noOfAnswers - 1));
+    toast.success("Answer deleted");
   };
   return (
     <div>
@@ -35,7 +37,11 @@ const DisplayAnswer = ({ ques, handleShare }) => {
                 to={`/Stackoverflow-frontend/User/${ques.userId}`}
                 className="user-link"
                 style={{ color: "#0086d8" }}>
-                <Avatar backgroundColor="green" color="white" px="8px" py="5px">
+                <Avatar
+                  backgroundColor="lightgreen"
+        
+                  px="8px"
+                  py="5px">
                   {ans.userAnswered.charAt(0).toUpperCase()}
                 </Avatar>
                 <div>{ans.userAnswered}</div>

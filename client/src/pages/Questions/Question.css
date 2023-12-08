@@ -49,6 +49,7 @@
   border-radius: 2px;
   background-color: #e1ecf4;
   color: #39739d;
+  text-decoration: none;
 }
 .question-action-user {
   width: 100%;
@@ -94,6 +95,7 @@
 .post-ans-container form .post-ans-btn {
   margin: 20px 0px;
   padding: 10px 10px;
+  width: 150px;
   background-color: #009dff;
   color: white;
   border: solid 1px #009dff;

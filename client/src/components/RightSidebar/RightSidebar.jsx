@@ -3,9 +3,16 @@ import "./RightSidebar.css";
 import Widget from "./Widget";
 import WidgetTags from "./WidgetTags";
 const RightSidebar = () => {
+  const now = new Date();
+  const hours = now.getHours;
   return (
     <div>
-      <aside className="right-sidebar responsive">
+      <aside
+        className={
+          hours >= 18 || hours <= 5
+            ? `right-sidebar-dark`
+            : `right-sidebar responsive`
+        }>
         <Widget />
         <WidgetTags />
       </aside>

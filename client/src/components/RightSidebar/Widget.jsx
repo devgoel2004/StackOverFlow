@@ -1,37 +1,39 @@
 import React from "react";
 import "./RightSidebar.css";
-import comment from "../../assests/comment-solid.svg";
-import pen from "../../assests/pen-solid.svg";
-import stack from "../../assests/stack-overflow.svg";
+import { BiSolidMessageRounded } from "react-icons/bi";
+import { FaStackOverflow, FaPen } from "react-icons/fa";
+
 const Widget = () => {
+  const now = new Date();
+  const hours = now.getHours();
   return (
-    <div className="widget">
+    <div className={hours >= 18 || hours <= 5 ? `widget-dark` : `widget`}>
       <h4>The overflow blog</h4>
       <div className="right-sidebar-div-1">
         <div className="right-sidebar-div-2">
-          <img src={pen} alt="pen" width="18" />
+          <FaPen />
           <p>
             Observability is key in the future of software (and your DevOps
             career)
           </p>
         </div>
         <div className="right-sidebar-div-2">
-          <img src={pen} alt="pen" width="18" />
+          <FaPen />
           <p>Podcast 374: How valuable is your screen name?</p>
         </div>
       </div>
       <h4>Featured on Meta</h4>
       <div className="right-sidebar-div-1">
         <div className="right-sidebar-div-2">
-          <img src={comment} alt="comment" width="18" />
+          <BiSolidMessageRounded />
           <p>Review queue workflows - Final release....</p>
         </div>
         <div className="right-sidebar-div-2">
-          <img src={comment} alt="comment" width="18" />
+          <BiSolidMessageRounded />
           <p>Please welcome Valued Associates: #958-V2Blast#959 - SpencerG</p>
         </div>
         <div className="right-sidebar-div-2">
-          <img src={stack} alt="stackoverflow" width="18" />
+          <FaStackOverflow />
           <p>
             Outdated Answers: accepted answer is now unpinned on Stack Overflow
           </p>

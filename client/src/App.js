@@ -9,10 +9,11 @@ import { fetchAllUsers } from "./actions/users";
 import { Toaster } from "react-hot-toast";
 // import Routes from "./Routes";
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
   const [slideIn, setSlideIn] = useState(true);
   const dispatch = useDispatch();
+  const now = new Date();
+  const hours = now.getHours();
+  console.log(hours);
   useEffect(() => {
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());
@@ -28,10 +29,10 @@ function App() {
     }
   };
   return (
-    <div className="App">
+    <div className={`App`}>
       <Router>
         <Toaster />
-        <Navbar handleSlideIn={handleSlideIn} setIsOpen={setIsOpen} />
+        <Navbar handleSlideIn={handleSlideIn} />
         <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} />
       </Router>
     </div>

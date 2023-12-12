@@ -18,8 +18,13 @@ const WidgetTags = () => {
     "python",
     "react.js",
   ];
+  const now = new Date();
+  const hours = now.getHours;
   return (
-    <div className="widget-tags">
+    <div
+      className={
+        hours >= 18 || hours <= 5 ? `widget-tags-dark` : `widget-tags`
+      }>
       <h4>Watched tags</h4>
       <div className="widget-tags-div">
         {tags.map((tag) => (

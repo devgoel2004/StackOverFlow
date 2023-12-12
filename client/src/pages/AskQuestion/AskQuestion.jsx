@@ -13,6 +13,8 @@ const AskQuestion = () => {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
+  const now = new Date();
+  const hours = now.getHours();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (User) {
@@ -46,7 +48,10 @@ const AskQuestion = () => {
   };
 
   return (
-    <div className="ask-question">
+    <div
+      className={
+        hours < 5 || hours > 22 ? `ask-question-dark` : `ask-question`
+      }>
       <div className="ask-ques-container">
         <h1>Ask A Public Question</h1>
         <form onSubmit={handleSubmit}>

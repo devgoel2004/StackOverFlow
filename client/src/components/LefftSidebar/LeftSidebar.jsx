@@ -1,8 +1,8 @@
 import React from "react";
 import "./LeftSidebar.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import Globe from "../../assests/globe-solid.svg";
 import { useSelector } from "react-redux";
+import { FaGlobe } from "react-icons/fa6";
 
 const LeftSidebar = ({ slideIn, handleSlideIn }) => {
   const navigate = useNavigate();
@@ -18,8 +18,14 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
       alert("Login ");
     }
   };
+  const now = new Date();
+  const hours = now.getHours();
   return (
-    <div className="left-sidebar" style={slideIn ? slidInStyle : slideOutStyle}>
+    <div
+      className={
+        hours >= 18 || hours <= 5 ? `dark-left-sidebar` : `left-sidebar`
+      }
+      style={slideIn ? slidInStyle : slideOutStyle}>
       <nav className="side-nav">
         <button className="nav-btn" onClick={handleSlideIn}>
           <NavLink
@@ -31,7 +37,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
         </button>
         <nav className="side-nav-div">
           <div>
-            <p>PUBLIC</p>
+            <p style={{ paddingLeft: "10px" }}>PUBLIC</p>
           </div>
           <button onClick={handleSlideIn} className="nav-btn">
             <NavLink
@@ -39,7 +45,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
               className="side-nav-links"
               activeClassName="active"
               style={{ paddingLeft: "40px" }}>
-              <img src={Globe} alt="globe" className="image-globe" />
+              <FaGlobe />
               <p style={{ paddingLeft: "10px" }}>Questions</p>
             </NavLink>
           </button>

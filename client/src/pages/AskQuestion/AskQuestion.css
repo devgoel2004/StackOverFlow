@@ -2,6 +2,13 @@
   min-height: 100vh;
   background-color: #f1f2f3;
 }
+.ask-question-dark {
+  background-color: rgb(116, 110, 110);
+  color: rgb(224, 213, 213);
+}
+.ask-question-dark form .ask-form-container {
+  background-color: rgb(116, 110, 110);
+}
 .ask-ques-container {
   margin: auto;
   max-width: 1200px;

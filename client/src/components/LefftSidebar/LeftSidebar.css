@@ -34,6 +34,16 @@
   padding-left: 10px;
   transition: 0.2s;
 }
+svg {
+  font-size: 2rem;
+}
+.dark-left-sidebar {
+  background-color: #22303c;
+  color: #dac9a1;
+}
+.dark-left-sidebar a {
+  color: #dac9a1;
+}
 .side-nav-links:hover {
   color: black;
 }

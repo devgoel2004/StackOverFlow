@@ -6,6 +6,25 @@
   justify-content: center;
   align-items: center;
 }
+.auth-section-dark {
+  min-height: 100vh;
+  margin: 0% auto;
+  background-color: #9ca4a9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth-section-dark .auth-container-2 form {
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 0 10px 25px rgb(0, 0, 0, 5%) 0 20px 48px rgb(0, 0, 0, 5%) 0 1px
+    4px rgb(0, 0, 0, 10%);
+}
 .auth-container-1 {
   padding: 20px;
   margin-right: 30px;

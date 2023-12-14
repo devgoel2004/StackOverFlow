@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assests/images.png";
 import search from "../../assests/search.svg";
@@ -12,15 +12,15 @@ import toast from "react-hot-toast";
 const Navbar = ({ setIsOpen, handleSlideIn }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const now = new Date();
+  var hours = now.getHours();
   var User = useSelector((state) => state.currentUserReducer);
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     toast.success("Logged out successfully");
-    navigate("/Stackoverflow-frontend/");
+    navigate("/Stackoverflow-frontend");
     dispatch(setCurrentUser(null));
   };
-  const now = new Date();
-  var hours = now.getHours();
   useEffect(() => {
     const token = User?.token;
     if (token) {
@@ -32,7 +32,7 @@ const Navbar = ({ setIsOpen, handleSlideIn }) => {
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
   }, [User?.token, dispatch]);
   return (
-    <nav className={hours < 5 || hours > 18 ? `dark` : `main-nav`}>
+    <nav className={hours <= 5 || hours >= 20 ? `dark` : `main-nav`}>
       <div className="navbar">
         <button
           className="slide-in-icon"
@@ -79,7 +79,7 @@ const Navbar = ({ setIsOpen, handleSlideIn }) => {
             />
           </form>
         </div>
-        <div className={hours < 5 || hours > 18 ? `btn-dark` : `navbar-2`}>
+        <div className={hours <= 5 || hours >= 20 ? `btn-dark` : `navbar-2`}>
           {User === null ? (
             <Link
               to="/Stackoverflow-frontend/Auth"

@@ -23,7 +23,7 @@ const WidgetTags = () => {
   return (
     <div
       className={
-        hours >= 18 || hours <= 5 ? `widget-tags-dark` : `widget-tags`
+        hours >= 20 || hours <= 5 ? `widget-tags-dark` : `widget-tags`
       }>
       <h4>Watched tags</h4>
       <div className="widget-tags-div">

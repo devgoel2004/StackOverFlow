@@ -4,6 +4,14 @@
   margin: 25px 0px;
   padding: 0px;
 }
+.question-details-page-dark {
+  width: calc(100% - 300px - 24px);
+  float: left;
+  margin: 25px 0px;
+  padding: 0px;
+  /* background-color: #939292; */
+  /* color: white; */
+}
 .question-details-container {
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -117,8 +125,11 @@
   white-space: pre-line;
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 800px) {
   .question-details-page {
+    width: calc(100% - 24px);
+  }
+  .question-details-page-dark {
     width: calc(100% - 24px);
   }
 }

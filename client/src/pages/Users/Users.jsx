@@ -1,16 +1,25 @@
 import React from "react";
 import LeftSidebar from "../../components/LefftSidebar/LeftSidebar";
-import { useLocation } from "react-router-dom";
 import "./Users.css";
-import UsersList from "./UsersList";
+import { useSelector } from "react-redux";
+import Loader from "../../components/Loader/Loader";
+import User from "./User";
 const Users = ({ slideIn, handleSlideIn }) => {
-  const location = useLocation();
+  const users = useSelector((state) => state.usersReducer);
   return (
     <div className="home-container-1">
       <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
       <div className="home-container-2" style={{ marginTop: "30px" }}>
         <h1 style={{ fontWeight: "400" }}>Users</h1>
-        {location.pathname === "/Users" ? <UsersList /> : <></>}
+        {users.length === 0 ? (
+          <Loader />
+        ) : (
+          <div className="user-list-container">
+            {users.map((user) => (
+              <User user={user} key={user?.id} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

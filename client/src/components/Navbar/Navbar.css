@@ -31,8 +31,10 @@
 .dark .navbar a {
   color: #dac9a1;
 }
+.btn-dark {
+  display: flex;
+}
 .btn-dark a {
-  background-color: #22303c;
   color: white;
 }
 .navbar img {

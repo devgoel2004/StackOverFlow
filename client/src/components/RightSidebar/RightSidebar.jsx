@@ -4,7 +4,7 @@ import Widget from "./Widget";
 import WidgetTags from "./WidgetTags";
 const RightSidebar = () => {
   const now = new Date();
-  const hours = now.getHours;
+  const hours = 10;
   return (
     <div>
       <aside

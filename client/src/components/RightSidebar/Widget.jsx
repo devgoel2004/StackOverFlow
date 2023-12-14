@@ -14,7 +14,7 @@ const Widget = () => {
           <FaPen />
           <p>
             Observability is key in the future of software (and your DevOps
-            career)
+            career.
           </p>
         </div>
         <div className="right-sidebar-div-2">

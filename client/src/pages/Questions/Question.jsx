@@ -2,7 +2,6 @@ import React from "react";
 import LeftSidebar from "../../components/LefftSidebar/LeftSidebar";
 import HomeMainbar from "../../components/HomeMainbar/HomeMainbar";
 import RightSidebar from "../../components/RightSidebar/RightSidebar";
-
 import "../../App.css";
 const Question = ({ slideIn, handleSlideIn }) => {
   return (

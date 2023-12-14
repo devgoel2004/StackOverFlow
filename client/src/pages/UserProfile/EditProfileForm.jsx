@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../../actions/users";
-
+import toast from "react-hot-toast";
+import Editor from "../../components/Editor/Editor";
 const EditProfileForm = ({ currentUser, setSwitch }) => {
   const [name, setName] = useState(currentUser?.result?.name);
   const [about, setAbout] = useState(currentUser?.result?.about);
@@ -10,9 +11,10 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (tags.length === 0 || tags[0] === "") {
-      alert("Update tags field");
+      toast.success("Update tags field");
     } else {
       dispatch(updateProfile(currentUser?.result?._id, { name, about, tags }));
+      toast.success("Update tags field");
     }
     setSwitch(false);
   };
@@ -25,7 +27,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
         className="edit-profile-form"
         onSubmit={handleSubmit}>
         <label htmlFor="name">
-          <h3>Display name</h3>
+          <h3>Display Name</h3>
           <input
             type="text"
             value={name}
@@ -34,12 +36,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
         </label>
         <label htmlFor="about">
           <h3>About Me</h3>
-          <textarea
-            name="about"
-            id="about"
-            cols="30"
-            rows="10"
-            onChange={(e) => setAbout(e.target.value)}></textarea>
+          <Editor type="text" value={about} onChange={setAbout} />
         </label>
         <label htmlFor="tags">
           <h3>Watched Tags</h3>
@@ -51,7 +48,11 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
           />
         </label>
         <br />
-        <input type="submit" value="Save Profile" className="user-submit-btn" />
+        <input
+          type="submit"
+          value="Update Profile"
+          className="user-submit-btn"
+        />
         <button
           type="button"
           className="user-cancel-btn"

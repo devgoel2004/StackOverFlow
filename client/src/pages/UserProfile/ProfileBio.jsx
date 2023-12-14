@@ -1,15 +1,23 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import HTMLReactParser from "html-react-parser";
 const ProfileBio = ({ currentProfile }) => {
   return (
     <div>
       <div>
         {currentProfile?.tags.length !== 0 ? (
           <>
-            <h4>Tags Watched</h4>
-            {currentProfile?.tags.map((tag) => (
-              <p key={tag}>{tag}</p>
-            ))}
+            <h4 style={{ marginTop: "10px" }}>Tags Watched</h4>
+            <div className="user-tags-container">
+              {currentProfile?.tags.map((tag) => (
+                <Link
+                  key={tag}
+                  className="user-tags-link"
+                  to="/Stackoverflow-frontend/Tags">
+                  <p key={tag}>{tag}</p>
+                </Link>
+              ))}
+            </div>
           </>
         ) : (
           <p>0 Tags Watched</p>
@@ -19,7 +27,7 @@ const ProfileBio = ({ currentProfile }) => {
         {currentProfile?.about ? (
           <>
             <h4>About</h4>
-            <p>{currentProfile?.about}</p>
+            <p>{HTMLReactParser(currentProfile?.about)}</p>
           </>
         ) : (
           <p>No Bio Found</p>

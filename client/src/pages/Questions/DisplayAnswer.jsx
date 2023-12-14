@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteAnswer } from "../../actions/question";
 import moment from "moment";
 import toast from "react-hot-toast";
+import HTMLReactParser from "html-react-parser";
 const DisplayAnswer = ({ ques, handleShare }) => {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
@@ -17,7 +18,7 @@ const DisplayAnswer = ({ ques, handleShare }) => {
     <div>
       {ques.answer.map((ans) => (
         <div className="display-ans" key={ans._id}>
-          <p>{ans.answerBody}</p>
+          <p>{HTMLReactParser(ans.answerBody)}</p>
           <div className="question-action-user">
             <div>
               <button type="button" onClick={handleShare}>
@@ -37,11 +38,7 @@ const DisplayAnswer = ({ ques, handleShare }) => {
                 to={`/Stackoverflow-frontend/User/${ques.userId}`}
                 className="user-link"
                 style={{ color: "#0086d8" }}>
-                <Avatar
-                  backgroundColor="lightgreen"
-        
-                  px="8px"
-                  py="5px">
+                <Avatar backgroundColor="lightgreen" px="8px" py="5px">
                   {ans.userAnswered.charAt(0).toUpperCase()}
                 </Avatar>
                 <div>{ans.userAnswered}</div>

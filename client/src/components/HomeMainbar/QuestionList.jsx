@@ -3,9 +3,10 @@ import Questions from "./Questions";
 import "./HomeMainbar.css";
 
 const QuestionList = ({ questionsList }) => {
-  const hours = 18;
+  const now = new Date();
+  const hours = now.getHours();
   return (
-    <div className={hours === 18 ? `question-list-dark` : null}>
+    <div className={hours === 12 || hours === 5 ? `question-list-dark` : null}>
       <>
         {questionsList?.map((question) => (
           <Questions question={question} key={question.id} />

@@ -4,12 +4,12 @@ import "./HomeMainbar.css";
 import moment from "moment";
 const Questions = ({ question }) => {
   const now = new Date();
-  const hours = 18;
+  const hours = now.getHours();
   return (
     <>
       <div
         className={
-          hours === 18
+          hours === 12 || hours === 5
             ? `display-question-container-dark`
             : `display-question-container`
         }>

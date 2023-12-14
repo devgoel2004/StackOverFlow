@@ -9,7 +9,6 @@ const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
   const [questionTags, setQuestionTags] = useState("");
-  const [videos, setVideos] = useState([]);
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
@@ -25,7 +24,6 @@ const AskQuestion = () => {
               questionTitle,
               questionBody,
               questionTags,
-              videos,
               userPosted: User.result.name,
               userId: User?.result?._id,
             },
@@ -90,18 +88,7 @@ const AskQuestion = () => {
                 rows="10"
                 onKeyPress={handleEnter}></textarea>
             </label>
-            <label htmlFor="videos">
-              <h4>Upload videos</h4>
-              <input
-                type="file"
-                name="videos"
-                id="videos"
-                multiple
-                className="form-control"
-                accept=".mp4, .mkv"
-                onChange={(e) => setVideos(e.target.files)}
-              />
-            </label>
+
             <label htmlFor="ask-ques-tags">
               <h4>Tags</h4>
               <p>Add up to 5 tags to describe what your question is about</p>

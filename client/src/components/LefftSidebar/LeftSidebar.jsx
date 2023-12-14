@@ -1,35 +1,30 @@
 import React from "react";
 import "./LeftSidebar.css";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+
 import { FaGlobe } from "react-icons/fa6";
 
 const LeftSidebar = ({ slideIn, handleSlideIn }) => {
-  const navigate = useNavigate();
-  var User = useSelector((state) => state.currentUserReducer);
   const slidInStyle = {
     transform: "translateX(0%)",
   };
   const slideOutStyle = {
     transform: "translateX(-100%)",
   };
-  const checkAuth = () => {
-    if (User === null) {
-      alert("Login ");
-    }
-  };
+  const length = window.innerWidth;
+  console.log(length);
   const now = new Date();
   const hours = now.getHours();
   return (
     <div
       className={
-        hours >= 18 || hours <= 5 ? `dark-left-sidebar` : `left-sidebar`
+        hours === 12 || hours === 5 ? `dark-left-sidebar` : `left-sidebar`
       }
       style={slideIn ? slidInStyle : slideOutStyle}>
       <nav className="side-nav">
         <button className="nav-btn" onClick={handleSlideIn}>
           <NavLink
-            to="/Stackoverflow-frontend/"
+            to="/Stackoverflow-frontend"
             className="side-nav-links"
             activeClassName="active">
             <p>Home</p>

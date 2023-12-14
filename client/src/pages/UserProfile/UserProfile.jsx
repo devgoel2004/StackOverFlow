@@ -13,6 +13,7 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
   const { id } = useParams();
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users && users.filter((user) => user._id === id);
+  console.log(currentProfile);
   const currentUser = useSelector((state) => state.currentUserReducer);
   const [Switch, setSwitch] = useState(false);
   return (
@@ -24,28 +25,34 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
             <>
               <section>
                 <div className="user-details-container">
-                  <div className="user-details">
+                  <div style={{ marginTop: "50px" }} className="user-details">
                     <Avatar
                       backgroundColor="purple"
                       color="white"
                       fontSize="50px"
                       px="40px"
                       py="35px">
-                      {currentProfile[0].name.charAt(0).toUpperCase()}
+                      {currentProfile[0]?.name.charAt(0).toUpperCase()}
                     </Avatar>
                     <div className="user-name">
-                      <h1>
+                      <h1 style={{ textTransform: "capitalize" }}>
                         {currentProfile[0]?.name}
                         <span
                           title="badge/rank"
-                          style={{ fontSize: "30px", color: "grey" }}>
+                          style={{
+                            fontSize: "30px",
+                            color: "grey",
+                            marginLeft: "5px",
+                          }}>
                           <i>-{currentProfile[0]?.badge}</i>
-                          
                         </span>
                       </h1>
                       <p>
-                        <FontAwesomeIcon icon={faBirthdayCake} /> joined on{" "}
-                        {moment(currentProfile[0].joinedOn).fromNow()}
+                        <FontAwesomeIcon
+                          icon={faBirthdayCake}
+                          style={{ marginRight: "5px" }}
+                        />{" "}
+                        joined on {moment(currentProfile[0].joinedOn).fromNow()}
                       </p>
                     </div>
                   </div>
@@ -54,6 +61,7 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
                       {currentUser?.result._id === id && (
                         <button
                           type="button"
+                          style={{ marginTop: "50px" }}
                           onClick={() => setSwitch(true)}
                           className="edit-profile-btn">
                           <FontAwesomeIcon icon={faPen} /> Edit Profile

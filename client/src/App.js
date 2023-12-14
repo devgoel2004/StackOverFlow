@@ -13,7 +13,6 @@ function App() {
   const dispatch = useDispatch();
   const now = new Date();
   const hours = now.getHours();
-  console.log(hours);
   useEffect(() => {
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());

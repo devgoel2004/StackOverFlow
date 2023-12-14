@@ -1,4 +1,5 @@
 .left-sidebar {
+  padding-top: 20px;
   width: 164px;
   box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.2);
   transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
@@ -34,9 +35,7 @@
   padding-left: 10px;
   transition: 0.2s;
 }
-svg {
-  font-size: 2rem;
-}
+
 .dark-left-sidebar {
   background-color: #22303c;
   color: #dac9a1;

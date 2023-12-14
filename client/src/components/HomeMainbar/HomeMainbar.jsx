@@ -5,12 +5,12 @@ import QuestionList from "./QuestionList";
 import { useSelector } from "react-redux";
 import Loader from "../Loader/Loader";
 const HomeMainbar = () => {
+  const location = useLocation();
   const user = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
   const questionsList = useSelector((state) => state.questionsReducer);
 
   const checkAuth = () => {
-    // function to check that user has been signed in or not.
     if (!user) {
       alert("Login or signup to ask a question");
       navigate("/Stackoverflow-frontend/Auth");
@@ -18,12 +18,12 @@ const HomeMainbar = () => {
       navigate("/Stackoverflow-frontend/AskQuestion");
     }
   };
-  const hours = 18;
-  const location = useLocation();
+  const now = new Date();
+  const hours = now.getHours();
   return (
-    <div className={hours === 18 ? `main-bar-dark` : `main-bar`}>
+    <div className={hours >= 18 || hours <= 5 ? `main-bar-dark` : `main-bar`}>
       <div className="main-bar-header">
-        {location.pathname === "/" ? (
+        {location.pathname === "/Stackoverflow-frontend" ? (
           <h1>Top Questions</h1>
         ) : (
           <h1>All Questions</h1>

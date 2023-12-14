@@ -11,6 +11,8 @@ const Auth = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const now = new Date();
+  const hours = now.getHours();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,12 +43,15 @@ const Auth = () => {
   };
   return (
     <>
-      <section className="auth-section">
+      <section
+        className={
+          hours >= 18 || hours <= 5 ? `auth-section-dark` : `auth-section`
+        }>
         {isSignup && <AboutAuth />}
         <div className="auth-container-2">
           <form onSubmit={handleSubmit}>
             {!isSignup && (
-              <img src={icon} alt="stack oveflow" className="login-logo" />
+              <img src={icon} alt="stack overflow" className="login-logo" />
             )}
             {isSignup && (
               <label htmlFor="name">
@@ -96,7 +101,6 @@ const Auth = () => {
                 }}
               />
             </label>
-
             {isSignup && (
               <label htmlFor="">
                 <input type="checkbox" id="check" />

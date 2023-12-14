@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Link,
-  useParams,
-  useNavigate,
-  useLocation,
-  Navigate,
-} from "react-router-dom";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import HTMLReactParser from "html-react-parser";
 import upVotes from "../../../src/assests/upvotes.svg";
 import downVotes from "../../../src/assests/downvotes.svg";
@@ -21,25 +15,27 @@ import {
   postAnswer,
   voteQuestion,
 } from "../../actions/question";
-import { faPersonWalkingDashedLineArrowRight } from "@fortawesome/free-solid-svg-icons";
+import toast from "react-hot-toast";
+import Loader from "../../components/Loader/Loader";
+import Editor from "../../components/Editor/Editor";
 
 const QuestionDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const questionsList = useSelector((state) => state.questionsReducer);
-  const url = "http://localhost:3000";
+  const url = "https://devgoel2004.github.io/stackoverflow-frontend/";
   const [answer, setAnswer] = useState("");
   const User = useSelector((state) => state.currentUserReducer);
   const dispatch = useDispatch();
   const handlePostAnswer = (e, answerLength) => {
     e.preventDefault();
     if (User === null) {
-      alert("Login or signup to answer a question");
-      navigate("/Auth");
+      toast.error("Login or signup to answer a question");
+      navigate("/Stackoverflow-frontend/Auth");
     } else {
       if (answer === "") {
-        alert("Enter an answer before submit");
+        toast.error("Enter an answer before submit");
       } else {
         dispatch(
           postAnswer({
@@ -57,8 +53,8 @@ const QuestionDetails = () => {
   //function to handle Up Vote
   const handleUpVote = () => {
     if (User === null) {
-      alert("Login or signup to up vote a question");
-      navigate("/Auth");
+      toast.error("Please login or Signup to answer a question");
+      navigate("/Stackoverflow-frontend/Auth");
     } else {
       dispatch(voteQuestion(id, "upVote", User.result._id));
     }
@@ -66,8 +62,8 @@ const QuestionDetails = () => {
   //function to handle Down Vote
   const handleDownVote = () => {
     if (User === null) {
-      alert("Login or signup to down vote a question");
-      navigate("/Auth");
+      toast.error("Login or signup to down vote a question");
+      navigate("/Stackoverflow-frontend/Auth");
     } else {
       dispatch(voteQuestion(id, "downVote", User.result._id));
     }
@@ -75,15 +71,23 @@ const QuestionDetails = () => {
   //functionality to delete and share the question
   const handleShare = () => {
     copy(url + location.pathname);
-    alert(`copied url: ${url}${location.pathname}`);
+    toast.success(`copied url: ${url}${location.pathname}`);
   };
   const handleDelete = () => {
     dispatch(deleteQuestion(id, navigate));
+    toast.success("Question deleted");
   };
+  const now = new Date();
+  const hours = now.getHours();
   return (
-    <div className="question-details-page">
+    <div
+      className={
+        hours >= 18 || hours <= 5
+          ? `question-details-page-dark`
+          : `question-details-page`
+      }>
       {questionsList.data === null ? (
-        <h1>Loading...</h1>
+        <Loader />
       ) : (
         <>
           {questionsList.data
@@ -91,7 +95,7 @@ const QuestionDetails = () => {
             .map((ques) => (
               <div key={ques._id}>
                 <section className="question-details-container">
-                  <h1>{ques.questionTitle}</h1>
+                  <h1 style={{ marginTop: "50px" }}>{ques.questionTitle}</h1>
                   <div className="question-details-container-2">
                     <div className="question-votes">
                       <img
@@ -110,8 +114,6 @@ const QuestionDetails = () => {
                         onClick={handleDownVote}
                       />
                     </div>
-                    {console.log(ques)}
-                    <div>{ques.videos}</div>
                     <div style={{ width: "100%" }}>
                       <p className="question-body">
                         {HTMLReactParser(ques.questionBody)}
@@ -126,7 +128,7 @@ const QuestionDetails = () => {
                           <button type="button" onClick={handleShare}>
                             Share
                           </button>
-                          {User?.result?.id !== ques?.userId && (
+                          {User?.result?.id === ques?.userId && (
                             <button type="button" onClick={handleDelete}>
                               Delete
                             </button>
@@ -167,12 +169,10 @@ const QuestionDetails = () => {
                     onSubmit={(e) => {
                       handlePostAnswer(e, ques.answer.length);
                     }}>
-                    <textarea
-                      name=""
-                      id=""
-                      cols="30"
-                      rows="10"
-                      onChange={(e) => setAnswer(e.target.value)}></textarea>
+                    <div>
+                      <Editor value={answer} onChange={setAnswer} />
+                    </div>
+                    <br />
                     <input
                       type="submit"
                       className="post-ans-btn"
@@ -196,7 +196,8 @@ const QuestionDetails = () => {
                         textDecoration: "none",
                         color: "#009dff",
                       }}>
-                      ask your own question
+                      {" "}
+                      Ask your own question
                     </Link>
                   </p>
                 </section>

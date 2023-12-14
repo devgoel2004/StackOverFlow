@@ -9,6 +9,13 @@
   display: flex;
   align-items: flex-start;
 }
+.user-tags-link p {
+  display: inline-block;
+  margin: 10px 0px;
+  padding: 5px 5px;
+  background-color: #e1ecf4;
+  color: #39739d;
+}
 .user-name {
   padding-left: 20px;
 }

@@ -5,7 +5,7 @@ export const askQuestion = (questionData, navigate) => async (dispatch) => {
     const { data } = await Api.postQuestion(questionData);
     dispatch({ type: "POST_QUESTION", payload: data });
     dispatch(fetchAllQuestions());
-    navigate("/Stackoverflow-frontend/");
+    navigate("/Stackoverflow-frontend");
   } catch (error) {
     console.log(error);
   }
@@ -18,27 +18,6 @@ export const fetchAllQuestions = () => async (dispatch) => {
     console.log(error);
   }
 };
-
-export const deleteQuestion = (id, navigate) => async (dispatch) => {
-  try {
-    const { data } = await Api.deleteQuestion(id);
-    dispatch(fetchAllQuestions());
-    navigate("/Stackoverflow-frontend/");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const voteQuestion = (id, value, userId) => async (dispatch) => {
-  console.log(id);
-  try {
-    const { data } = await Api.voteQuestion(id, value, userId);
-    dispatch(fetchAllQuestions());
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const postAnswer = (answerData) => async (dispatch) => {
   try {
     const { id, noOfAnswers, answerBody, userAnswered, userId } = answerData;
@@ -56,9 +35,29 @@ export const postAnswer = (answerData) => async (dispatch) => {
   }
 };
 
+export const deleteQuestion = (id, navigate) => async (dispatch) => {
+  try {
+    await Api.deleteQuestion(id);
+    dispatch(fetchAllQuestions());
+    navigate("/Stackoverflow-frontend");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const voteQuestion = (id, value, userId) => async (dispatch) => {
+  console.log(id);
+  try {
+    await Api.voteQuestion(id, value, userId);
+    dispatch(fetchAllQuestions());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteAnswer = (id, answerId, noOfAnswers) => async (dispatch) => {
   try {
-     await Api.deleteAnswer(id, answerId, noOfAnswers);
+    await Api.deleteAnswer(id, answerId, noOfAnswers);
     dispatch(fetchAllQuestions());
   } catch (error) {
     console.log(error);

@@ -35,7 +35,7 @@ const DisplayAnswer = ({ ques, handleShare }) => {
             <div>
               <p>answered {moment(ans.postedOn).fromNow()} </p>
               <Link
-                to={`/Stackoverflow-frontend/User/${ques.userId}`}
+                to={`/stackoverflow-frontend/User/${ques.userId}`}
                 className="user-link"
                 style={{ color: "#0086d8" }}>
                 <Avatar backgroundColor="lightgreen" px="8px" py="5px">

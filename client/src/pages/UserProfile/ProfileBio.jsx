@@ -13,7 +13,7 @@ const ProfileBio = ({ currentProfile }) => {
                 <Link
                   key={tag}
                   className="user-tags-link"
-                  to="/Stackoverflow-frontend/Tags">
+                  to="/stackoverflow-frontend/Tags">
                   <p key={tag}>{tag}</p>
                 </Link>
               ))}

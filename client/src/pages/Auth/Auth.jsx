@@ -13,7 +13,6 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const now = new Date();
   const hours = now.getHours();
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSwitch = () => {
@@ -77,7 +76,6 @@ const Auth = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
-
             <label htmlFor="password">
               <div
                 style={{

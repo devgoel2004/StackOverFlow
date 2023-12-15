@@ -42,11 +42,11 @@ const Navbar = ({ setIsOpen, handleSlideIn }) => {
           <FaBars />
         </button>
         <div className="navbar-1">
-          <Link to="/Stackoverflow-frontend/" className="nav-item nav-logo">
+          <Link to="/stackoverflow-frontend/" className="nav-item nav-logo">
             <img src={Logo} alt="logo" />
           </Link>
           <Link
-            to="/Stackoverflow-frontend/"
+            to="/stackoverflow-frontend/"
             className="nav-items nav-item nav-btn res-nav">
             About
           </Link>
@@ -56,12 +56,12 @@ const Navbar = ({ setIsOpen, handleSlideIn }) => {
             Chatbot
           </Link>
           <Link
-            to="/Stackoverflow-frontend/"
+            to="/stackoverflow-frontend/"
             className="nav-items nav-item nav-btn res-nav">
             Products
           </Link>
           <Link
-            to="/Stackoverflow-frontend/"
+            to="/stackoverflow-frontend/"
             className="nav-items nav-item nav-btn res-nav">
             For Teams
           </Link>
@@ -82,7 +82,7 @@ const Navbar = ({ setIsOpen, handleSlideIn }) => {
         <div className={hours <= 5 || hours >= 20 ? `btn-dark` : `navbar-2`}>
           {User === null ? (
             <Link
-              to="/Stackoverflow-frontend/Auth"
+              to="/stackoverflow-frontend/Auth"
               className="nav-item nav-links ">
               Log in
             </Link>
@@ -94,7 +94,7 @@ const Navbar = ({ setIsOpen, handleSlideIn }) => {
                 py="7px"
                 borderRadius="50%">
                 <Link
-                  to={`/Stackoverflow-frontend/User/${User?.result?._id}`}
+                  to={`/stackoverflow-frontend/User/${User?.result?._id}`}
                   style={{ color: "white", textDecoration: "none" }}>
                   {User?.result.name.charAt(0).toUpperCase()}
                 </Link>

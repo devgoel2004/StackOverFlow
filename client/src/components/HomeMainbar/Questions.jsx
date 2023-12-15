@@ -24,7 +24,7 @@ const Questions = ({ question }) => {
         <div className="display-question-details">
           <Link
             className="question-title-link"
-            to={`/Stackoverflow-frontend/Questions/${question?._id}`}>
+            to={`/stackoverflow-frontend/Questions/${question?._id}`}>
             {question?.questionTitle?.length >
             (window.innerWidth <= 400 ? 70 : 90)
               ? question?.questionTitle.substring(

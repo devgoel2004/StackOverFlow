@@ -11,10 +11,8 @@ import ProfileBio from "./ProfileBio";
 import "./UserProfile.css";
 const UserProfile = ({ slideIn, handleSlideIn }) => {
   const { id } = useParams();
-  console.log(id);
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users && users.filter((user) => user._id === id);
-  console.log(currentProfile);
   const currentUser = useSelector((state) => state.currentUserReducer);
   const [Switch, setSwitch] = useState(false);
   return (

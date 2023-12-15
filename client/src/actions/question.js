@@ -5,7 +5,7 @@ export const askQuestion = (questionData, navigate) => async (dispatch) => {
     const { data } = await Api.postQuestion(questionData);
     dispatch({ type: "POST_QUESTION", payload: data });
     dispatch(fetchAllQuestions());
-    navigate("/Stackoverflow-frontend");
+    navigate("/stackoverflow-frontend");
   } catch (error) {
     console.log(error);
   }
@@ -39,7 +39,7 @@ export const deleteQuestion = (id, navigate) => async (dispatch) => {
   try {
     await Api.deleteQuestion(id);
     dispatch(fetchAllQuestions());
-    navigate("/Stackoverflow-frontend");
+    navigate("/stackoverflow-frontend");
   } catch (error) {
     console.log(error);
   }
